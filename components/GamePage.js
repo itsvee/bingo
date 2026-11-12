@@ -28,7 +28,7 @@ export default function GamePage({roomKey}) {
   }
   const host=state?.role==='host';
   return <>
-    <Head><title>{state?`ห้อง ${state.room} · `:''}บิงโกคลับ — เล่นด้วยกัน สนุกด้วยกัน</title><meta name="description" content="บิงโก 5×5 เล่นกับเพื่อนได้ทันที สร้างห้อง แชร์รหัส แล้วลุ้นเลขไปด้วยกัน"/><meta name="theme-color" content="#087455"/></Head>
+    <Head><title>{state?`ห้อง ${state.room} · `:''}บิงโกคลับ — เล่นด้วยกัน สนุกด้วยกัน</title><meta name="description" content="บิงโก 5×5 เล่นกับเพื่อนได้ทันที สร้างห้อง แชร์รหัส แล้วลุ้นเลขไปด้วยกัน"/><meta name="theme-color" content="#fffaf0"/></Head>
     <div className={`app-shell ${state ? (host ? 'host-session' : 'player-session') : ''}`}>
       <header className="topbar"><a className="brand" href="/"><span className="brand-icon" aria-hidden="true">✦</span>บิงโก<span>คลับ</span></a><span className={`connection ${connected?'online':''}`} role="status">{connected?'พร้อมเล่น':'กำลังเชื่อมต่อ…'}</span></header>
       <main id="main-content">
