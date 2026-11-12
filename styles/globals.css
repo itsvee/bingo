@@ -120,3 +120,10 @@
  .player-session .your-card{margin-top:6px}
  .player-session .card-note{margin-top:3px}
 }
+
+.join-qr{display:grid;justify-items:center;gap:8px;margin:0 auto 20px;max-width:100%;min-width:0}
+.join-qr-image{display:block;background:#fff;border-radius:12px;line-height:0;max-width:100%}
+.join-qr-image svg{display:block;max-width:100%;height:auto;border-radius:12px}
+.waiting-panel .join-qr p{margin:0;font-size:.85rem;color:var(--text)}
+.join-qr-link{font-size:.75rem;color:var(--muted);overflow-wrap:anywhere;max-width:100%}
+@media(max-width:650px){.join-qr{margin-bottom:16px}.join-qr-image svg{width:192px}.waiting-panel .join-qr p{font-size:.75rem}}

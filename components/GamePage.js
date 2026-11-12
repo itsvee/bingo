@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useGame } from './useGame';
 import { Card, Draws, NumberHistory, preview } from './Board';
+import JoinQRCode from './JoinQRCode';
 export default function GamePage({roomKey}) {
   const router=useRouter();
   const room=typeof roomKey==='string'?roomKey.toUpperCase():null;
@@ -38,7 +39,7 @@ export default function GamePage({roomKey}) {
         {!state.hostOnline&&!host&&<p className="notice" role="status">ผู้จัดเกมหลุดการเชื่อมต่อ รอสักครู่ เกมและการ์ดยังอยู่เหมือนเดิม</p>}
         <div className="game-layout">
           <div className="play-area">
-            {state.status==='waiting'?<section className="waiting-panel"><span className="eyebrow">พร้อมแล้วก็ชวนเพื่อนเลย</span><h2>รอเพื่อนเข้าห้อง</h2><p>{host?'แชร์ลิงก์หรือรหัสห้องให้เพื่อน แล้วเริ่มเกมเมื่อทุกคนพร้อม':'การ์ดของคุณพร้อมแล้ว รอผู้จัดเกมเริ่มรอบนี้'}</p><div className="ticket-code">{state.room}</div><p className="muted">กติกา 5×5 · เลข 1–75 · ครบ 1 แถวชนะ</p>{host&&<button className="button" disabled={disabled||!state.players.some(p=>p.online)} onClick={()=>action('game:start')}>{pending?'กำลังเริ่ม…':`เริ่มเกม · ${state.players.filter(p=>p.online).length} คนพร้อม`}</button>}</section>:<Draws drawn={state.drawn}/>}
+            {state.status==='waiting'?<section className="waiting-panel"><span className="eyebrow">พร้อมแล้วก็ชวนเพื่อนเลย</span><h2>รอเพื่อนเข้าห้อง</h2><p>{host?'แชร์ลิงก์หรือรหัสห้องให้เพื่อน แล้วเริ่มเกมเมื่อทุกคนพร้อม':'การ์ดของคุณพร้อมแล้ว รอผู้จัดเกมเริ่มรอบนี้'}</p><div className="ticket-code">{state.room}</div>{host&&<JoinQRCode room={state.room}/>}<p className="muted">กติกา 5×5 · เลข 1–75 · ครบ 1 แถวชนะ</p>{host&&<button className="button" disabled={disabled||!state.players.some(p=>p.online)} onClick={()=>action('game:start')}>{pending?'กำลังเริ่ม…':`เริ่มเกม · ${state.players.filter(p=>p.online).length} คนพร้อม`}</button>}</section>:<Draws drawn={state.drawn}/>}
             {host&&state.status==='playing'&&<button className="button draw-button" disabled={disabled||state.drawn.length===75} onClick={()=>action('game:draw')}>{pending?'กำลังสุ่ม…':state.drawn.length===75?'ออกครบทั้ง 75 เลขแล้ว':'สุ่มเลขถัดไป'}<span aria-hidden="true">↗</span></button>}
             {!host&&<section className="your-card"><div className="section-label"><h2>การ์ดของ {state.name}</h2><span>แต้มให้อัตโนมัติ</span></div><Card card={state.card} drawn={state.drawn}/><button className="button claim-button" disabled={disabled||state.status!=='playing'} onClick={()=>action('game:claim')}>{pending?'กำลังตรวจ…':'บิงโก! ครบแถวแล้ว'}</button><p className="card-note">แนวนอน แนวตั้ง หรือทแยง ครบ 1 แถวก็กดบิงโกได้เลย</p></section>}
             <NumberHistory drawn={state.drawn}/>

@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "next": "16.4.6",
+    "qrcode.react": "^4.2.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3"
   },
-  "engines": { "node": ">=24" }
+  "engines": {
+    "node": ">=24"
+  }
 }
