@@ -1,6 +1,21 @@
 # Bingo Club / บิงโกคลับ
 
-A Thai, mobile-friendly multiplayer bingo game built with Next.js, React and Socket.IO. This fork redesigns [andres0ares/bingo](https://github.com/andres0ares/bingo); credit for the original multiplayer bingo project belongs to its upstream author.
+A Thai multiplayer bingo game developed and maintained by **Otters Studio**, built for parties, reunions and playing together on phones. Built with Next.js, React and Socket.IO.
+
+- **Play:** https://bingo.pjmfamily.in.th/
+- **Repository:** https://github.com/itsvee/bingo
+- **Maintainer:** [itsvee](https://github.com/itsvee) / Otters Studio
+
+This edition introduces standard 5×5 bingo, server-validated gameplay, a Thai interface, a mobile-first player screen, QR room invitations and a coral, butter-yellow and ink-blue party design. It builds on the original project by [andres0ares](https://github.com/andres0ares); see [Acknowledgments](#acknowledgments).
+
+## Features
+
+- Create a room and invite friends with a QR code, link or room code.
+- Play with up to 60 players per room, with private server-generated cards.
+- Automatically mark drawn numbers and claim a win with one completed line.
+- Keep the card, latest number and claim action prominent on mobile.
+- Follow recent draws, room participants and connection status.
+- Use system dark mode and reduced-motion preferences.
 
 ## Rules
 
@@ -47,6 +62,10 @@ Engine tests use Node's built-in test runner and cover card ranges, uniqueness, 
 
 The browser deliberately uses HTTP polling without upgrading, because direct WebSockets may fail behind the proxy. No external realtime service is required. The server also accepts WebSockets if an independently configured client needs them.
 
+## Acknowledgments
+
+This project is maintained as an Otters Studio project. It began from the open-source [andres0ares/bingo](https://github.com/andres0ares/bingo) project, which provided the original multiplayer bingo foundation and inspiration. Thank you to Andres Oares for sharing that work. The current 5×5 game rules, server validation, Thai interface, QR invitations, responsive layout and party visual system are developed and maintained in this repository.
+
 ## State, privacy and limits
 
 Rooms live only in this server process. Deploys, restarts or process recycling erase all games. Idle rooms expire after 12 hours; capacity is 500 rooms and 60 players per room. Multi-process hosting needs a shared authoritative game store and Socket.IO coordination and is not supported here.
@@ -57,7 +76,7 @@ The server validates membership, ownership, game phase, player names and winning
 
 ## Interface
 
-Emerald accents, tactile round number tiles, automatic marks with check indicators, Thai form labels/errors, connection feedback, waiting roster, draw history, winner announcement, keyboard focus indicators, reduced-motion support and system dark mode. Noto Sans Thai is served locally from `public/fonts`; its SIL Open Font License is included beside the font.
+The interface uses a coral, butter-yellow and ink-blue party palette, tactile bingo-ball and ticket details, automatic marks with check indicators, Thai form labels and errors, connection feedback, waiting roster, draw history, winner announcement, keyboard focus indicators, reduced-motion support and system dark mode. Noto Sans Thai is served locally from `public/fonts`; its SIL Open Font License is included beside the font.
 
 ## Source map
 
